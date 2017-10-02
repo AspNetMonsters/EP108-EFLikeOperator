@@ -20,46 +20,8 @@ namespace EfLikeOperator.Pages
 
         public void OnGet()
         {            
-            EmployeesContainingTibbs = _context.Employees.Where(e => e.LastName.Contains("Tibbs")).ToList();            
+            EmployeesContainingTibbs = _context.Employees.Where(e => e.LastName.StartsWith("Tibbs")).ToList();
+            EmployeesLikeTibbs = _context.Employees.Where(e => EF.Functions.Like(e.LastName, "Tibbs%")).ToList();
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//EmployeesLikeTibbs = _context.Employees.Where(e => EF.Functions.Like(e.LastName, "Tibbs")).ToList();
